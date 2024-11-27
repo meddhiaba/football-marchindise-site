@@ -1,0 +1,102 @@
+<div class="cart-container min-h-[55vh] p-12">
+  @if(cart.length > 0){
+  <h1 class="text-center text-3xl text-blue-950 font-bold mb-5">
+    Your Cart ({{cart.length}})
+  </h1>
+  <div class="flex flex-col justify-center items-center">
+    @for(item of cart; track $index){
+    <div
+      class="cart-item max-w-[500px] bg-white rounded-lg shadow-md w-full p-4 mb-4 flex justify-between items-center"
+    >
+      <h2 class="text-lg font-semibold text-gray-800">{{ item.name }}</h2>
+      <p class="text-sm text-gray-600">
+        Price: <span class="font-medium">{{ item.price }} TND</span>
+      </p>
+      <p class="text-sm text-gray-600">
+        Quantity: <span class="font-medium">{{ item.quantity }}</span>
+      </p>
+      <button
+        (click)="removeFromCart(item.id)"
+        class="ml-4 bg-blue-950 hover:bg-blue-800 text-white text-sm px-4 py-2 rounded-lg transition-all duration-200 shadow-sm"
+      >
+        Remove
+      </button>
+    </div>
+    }
+    <button
+      (click)="clearCart()"
+      class="bg-red-700 text-white text-lg px-4 py-2 rounded-md mt-12"
+    >
+      Clear Cart <i class="bi bi-trash"></i>
+    </button>
+  </div>
+  }@else{
+  <h1 class="text-center text-3xl text-blue-950 font-bold">
+    Your Cart is empty!
+  </h1>
+  }
+</div>
+
+@if (cart.length > 0 && !orderConfirmed) {
+  <div >
+    <h2 class="text-center text-2xl text-blue-950 font-bold mt-12">Confirm Your Order</h2>
+
+    <form [formGroup]="orderForm" (ngSubmit)="submitOrder()" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+      <div class="form-group mb-4">
+        <label for="cardNumber">Card Number:</label>
+        <input
+          type="text"
+          id="cardNumber"
+          class="form-control"
+          formControlName="cardNumber"
+          required
+        />
+        @if (orderForm.get('cardNumber')?.invalid && orderForm.get('cardNumber')?.touched) {
+          <div class="text-red-500">
+            Please enter a valid card number.
+          </div>
+        }
+      </div>
+
+      <div class="form-group mb-4">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+          required
+        />
+        @if (orderForm.get('password')?.invalid && orderForm.get('password')?.touched) {
+          <div class="text-red-500">
+            Password is required.
+          </div>
+        }
+      </div>
+
+      <div class="form-group mb-4">
+        <label for="userId">User ID:</label>
+        <input
+          type="text"
+          id="userId"
+          class="form-control"
+          formControlName="userId"
+          required
+        />
+        @if (orderForm.get('userId')?.invalid && orderForm.get('userId')?.touched) {
+          <div class="text-red-500">
+            User ID is required.
+          </div>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-success w-full mt-4"
+        [disabled]="orderForm.invalid"
+      >
+        Place Order
+      </button>
+    </form>
+  </div>
+}

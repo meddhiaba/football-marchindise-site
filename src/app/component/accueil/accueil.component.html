@@ -1,0 +1,84 @@
+<div class="home-page container-fluid p-0" style="margin-top: 70px;">
+  <div class="hero-section text-white text-center py-5">
+    <div class="overlay bg-dark opacity-75 position-absolute top-0 start-0 end-0 bottom-0"></div>
+    <div class="container position-relative">
+      <h1 class="display-4 fw-bold">Welcome to Tunisian Football Kingdom</h1>
+      <p class="lead mb-4">Discover the best in Tunisian football merchandise!</p>
+      <a routerLink="/products" class="btn btn-warning btn-lg">Shop Now</a>
+    </div>
+  </div>
+
+   @if(promoProduct){
+    <div class="promo-section container my-5" >
+      <div class="row">
+        <div class="col-md-6">
+          <img [src]="promoProduct.imageUrl" alt="Promo Product" class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+          <h2 class="text-primary mb-3">Exclusive Offer: {{ promoProduct.name }}</h2>
+          <p class="lead">{{ promoProduct.description }}</p>
+          <a [routerLink]="'/product/' + promoProduct.id" class="btn btn-primary btn-lg mt-3">Get Yours Now</a>
+        </div>
+      </div>
+    </div>
+   }
+  <div class="featured-products container my-5">
+    <h2 class="text-center top mb-4">Our Top Picks</h2>
+    <div class="row g-4">
+      @for (product of topPicks; track $index) {
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <img [src]="product.imageUrl" class="card-img-top" alt="{{ product.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+              <a [routerLink]="'/product/' + product.id" class="btn btn-outline-primary w-100">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="testimonials-section bg-light py-5">
+    <div class="container">
+      <h2 class="text-center top mb-4">What Our Fans Say</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card border-0">
+            <div class="text-center">
+              <p class="top">"Amazing quality! Proud to represent Tunisian football!"</p>
+              <p class="text-primary fw-bold">- Med Ali</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0">
+            <div class="text-center">
+              <p class="top">"Fast delivery and excellent customer service!"</p>
+              <p class="text-primary fw-bold">- Amira</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0">
+            <div class="text-center">
+              <p class="top" >"Best place to shop for football gear. Highly recommended!"</p>
+              <p class="text-primary fw-bold">- Sami</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section text-center bg-dark text-white py-5">
+    <h3 class="mb-3">Ready to Gear Up?</h3>
+    <p>Join our community of passionate fans and explore our exclusive merchandise.</p>
+    <a routerLink="/products" class="btn btn-warning">Start Shopping</a>
+  </div>
+</div>
+
+<footer class="bg-light text-center py-3 mt-5">
+  <p class="mb-0">&copy; 2024 Med Dhia Ben Aouiene. All rights reserved.</p>
+</footer>

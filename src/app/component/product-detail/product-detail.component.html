@@ -1,0 +1,51 @@
+@if (!isLoading && product) {
+  <div class="container" >
+    <h2>{{ product.name }}</h2>
+    <img [src]="product.imageUrl" class="img-fluid" alt="{{ product.name }}" />
+    <p>{{ product.description }}</p>
+    <p><strong>{{ product.price | prix }}</strong></p>
+    <p [ngClass]="{
+      'available': product.disponible,
+      'not-available': !product.disponible
+    }">{{ product.disponible ? 'Available' : 'Not Available' }}
+    </p>
+    <button (click)="addToCart()" class="btn btn-success">Add to Cart</button>
+    <button class="btn btn-success" (click)="goToCart()" >Commander</button>
+    <div class="comments">
+      <h3>Commentaires</h3>
+      @if (product.comments && product.comments.length > 0) {
+        <div>
+          @for (comment of product.comments; track $index) {
+            <div >
+            <p>
+              <strong>{{ comment.author }}</strong>
+              ({{ comment.date | date: 'short' }}):
+            </p>
+            <p>{{ comment.message }}</p>
+          </div>
+        }
+        </div>
+      }@else{
+        <p>Aucun commentaire pour ce produit.</p>
+      }
+    </div>
+
+    <div class="add-comment">
+      <h4>Ajouter un Commentaire</h4>
+      <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+        <div class="form-group">
+          <label for="author">Auteur:</label>
+          <input type="text" id="author" class="form-control" formControlName="author" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" class="form-control" formControlName="message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="commentForm.invalid">
+          Ajouter
+        </button>
+      </form>
+    </div>
+  </div>
+}
+

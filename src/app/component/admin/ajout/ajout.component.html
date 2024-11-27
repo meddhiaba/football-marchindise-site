@@ -1,0 +1,71 @@
+<div class="admin-dashboard">
+  <h1>Admin Dashboard</h1>
+  <div class="product-form">
+    <h2>Add Product</h2>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name" required />
+      </div>
+
+      <div>
+        <label for="description">Description:</label>
+        <input type="text" id="description" formControlName="description" required />
+      </div>
+
+      <div>
+        <label for="price">Price:</label>
+        <input type="number" id="price" formControlName="price" required min="0" />
+      </div>
+
+      <div>
+        <label for="image">Product Image:</label>
+        <input type="file" id="image" (change)="onImageChange($event)" />
+      </div>
+
+      <div>
+        <label for="availability">Available:</label>
+        <input type="checkbox" id="availability" [checked]="productForm.value.disponible"  formControlName="disponible" />
+
+      </div>
+
+      <button type="submit" [disabled]="productForm.invalid">Add Product</button>
+    </form>
+  </div>
+
+  <div class="product-list">
+    <h2>Product List</h2>
+    <input type="text" placeholder="Search by name or description..." [formControl]="searchControl" />
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of filteredProducts; track $index) {
+          <tr>
+            <td>{{ product.id }}</td>
+            <td><img [src]="product.imageUrl" class="small-image"></td>
+
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price | currency }}</td>
+            <td [ngClass]="{
+              'available': product.disponible,
+              'not-available': !product.disponible
+            }">
+          {{ product.disponible ? 'Available' : 'Not Available' }}
+        </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

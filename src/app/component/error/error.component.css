@@ -1,0 +1,46 @@
+.error-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.error-icon {
+  font-size: 50px;
+  color: #dc3545;
+  margin-bottom: 20px;
+}
+
+.error-message h2 {
+  font-size: 2rem;
+  color: #721c24;
+  margin-bottom: 10px;
+}
+
+.error-message p {
+  font-size: 1.125rem;
+  color: #721c24;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  padding: 20px;
+}
+
+.error-component a {
+  text-decoration: none;
+  color: #004085;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.error-component a:hover {
+  color: #002752;
+}

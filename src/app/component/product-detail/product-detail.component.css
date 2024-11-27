@@ -1,0 +1,160 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+img.img-fluid {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+strong {
+  color: #f39c12;
+  font-size: 1.5rem;
+}
+
+.available {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.not-available {
+  background-color: #dc3545;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+button.btn-success {
+  background-color: #28a745;
+}
+
+button.btn-success:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+button.btn-primary {
+  background-color: #007bff;
+}
+
+button.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.comments {
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+}
+
+.comments h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.comments div {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comments p {
+  margin: 0.5rem 0;
+}
+
+.add-comment {
+  margin-top: 3rem;
+}
+
+.add-comment h4 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button[type="submit"] {
+  margin-top: 1rem;
+  background-color: #007bff;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+h2, h3, h4 {
+  font-family: 'Oswald', sans-serif;
+}
