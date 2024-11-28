@@ -10,9 +10,5 @@ import { NavComponent } from "./nav/nav.component";
   styleUrls: ['./admin.component.css'],
 })
 export class AdminDashboardComponent  {
-  constructor(private router:Router){}
-  onDisconnect(){
-    localStorage.setItem("state", "disconnected");
-    this.router.navigate(['/login']);
-  }
+
 }

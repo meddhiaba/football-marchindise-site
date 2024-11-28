@@ -51,9 +51,7 @@ export class EditComponent {
     if (this.productForm.valid) {
       const product = this.productForm.value as Product;
       product.disponible = this.productForm.get('disponible')?.value ?? false;
-
       product.comments = [];
-
       if (this.editingProductId) {
         this.updateProduct(this.editingProductId, product);
         this.editingProductId = null;

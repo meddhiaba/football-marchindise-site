@@ -17,7 +17,6 @@ export class AjoutComponent {
   filteredProducts: Product[] = [];
   searchControl: FormControl = new FormControl('');
   productForm: FormGroup;
-  editingProductId: string | null = null;
 
   constructor(private productService: ProductService, private fb: FormBuilder,private router:Router) {
     this.productForm = this.fb.group({
@@ -45,10 +44,6 @@ export class AjoutComponent {
 
   addProduct(product: Product) {
     this.productService.addProduct(product).subscribe(() => this.loadProducts());
-  }
-
-  updateProduct(id: string, product: Product) {
-    this.productService.updateProduct(id, product).subscribe(() => this.loadProducts());
   }
 
   onSubmit() {
@@ -82,7 +77,6 @@ export class AjoutComponent {
       imageUrl: '',
       disponible: false,
     });
-    this.editingProductId = null;
   }
 
   filterProducts(searchKeyword: string) {

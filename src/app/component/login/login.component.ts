@@ -28,8 +28,8 @@ export class LoginComponent {
     private dialog: MatDialog
   ) {
     this.loginForm = this.fb.group({
-      username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required,Validators.maxLength(5)]),
+      password: new FormControl('', [Validators.required,Validators.maxLength(5)]),
     });
 
     this.resetPasswordForm = this.fb.group({
@@ -98,19 +98,15 @@ export class LoginComponent {
 
   onResetPassword() {
     const { newPassword, confirmPassword } = this.resetPasswordForm.value;
-
     if (this.resetPasswordForm.invalid) {
       this.errorMessage = 'Please fill in all required fields and  password must be > 6 char.';
       return;
     }
-
     if (newPassword !== confirmPassword) {
       this.errorMessage = 'Passwords do not match. Please try again.';
       return;
     }
-
     const username = this.loginForm.get('username')?.value;
-
     this.userService.resetPassword(username, newPassword).subscribe({
       next: (isReset) => {
         if (isReset) {

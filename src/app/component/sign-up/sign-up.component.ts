@@ -19,7 +19,7 @@ export class SignUpComponent {
       {
         username: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
         password: new FormControl<string>('', [Validators.required, Validators.minLength(6)]),
-        confirmPassword: new FormControl<string>('', [Validators.required]),
+        confirmPassword: new FormControl<string>('', [Validators.required,Validators.minLength(6)]),
       },
       { validators: [this.passwordMatchValidator] }
     );
